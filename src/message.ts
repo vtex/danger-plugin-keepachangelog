@@ -43,13 +43,12 @@ Please, add a section to your changelog entry. Example:
 
 \`\`\`diff
  ## [Unreleased]
-
 ${versionChange ? `\n+## [1.0.1] - ${(new Date).toISOString().slice(0, 10)}` : ''}
 + ### Fixed
  - Issue with image sizing in the SKU Selector.
 \`\`\`
 
-You can use the following section:
+You can use one of the following sections:
 - \`Added\` for new features.
 - \`Changed\` for changes in existing functionality.
 - \`Deprecated\` for soon-to-be removed features.
