@@ -2,7 +2,7 @@
 
 [![npm version](https://badge.fury.io/js/danger-plugin-keepachangelog.svg)](https://badge.fury.io/js/danger-plugin-keepachangelog)
 
-> Makes changes to CHANGELOG consistent with keepachangelog standard
+> Makes changes to CHANGELOG consistent with [keepachangelog](https://keepachangelog.com/en/1.0.0/) standard
 
 ## Usage
 
