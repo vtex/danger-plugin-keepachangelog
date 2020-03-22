@@ -25,12 +25,12 @@ keepachangelog()
 
 > ℹ️ All checks will be skipped if #trivial is present in the title or body of the PR
 
-This plugin will trigger a Danger `fail` when:
-
-1. No changes to `CHANGELOG.md`
-2. Missing a section line (example: `### Fixed`)
-3. Missing a new version line (example: `## [1.0.1] - 2020-03-20`).
-    - When the option `changeVersion` is set to `false`, the check changes to fail if a version line is present
+Situation | Message example
+---|---
+No changes to `CHANGELOG.md` were found | [Example](https://github.com/klzns/test-repo/pull/11)
+Missing a section line (eg: `### Fixed`) | [Example](https://github.com/klzns/test-repo/pull/12)
+Missing a new version line (eg: `## [1.0.1] - 2020-03-20`) | [Example](https://github.com/klzns/test-repo/pull/14)
+Having a new version line (when the option `changeVersion` is set to `false`) | [Example](https://github.com/klzns/test-repo/pull/13)
 
 ### Options
 
