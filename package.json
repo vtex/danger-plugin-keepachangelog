@@ -1,7 +1,7 @@
 {
   "name": "danger-plugin-keepachangelog",
   "description": "Makes changes to CHANGELOG consistent with keepachangelog standard",
-  "version": "1.0.4",
+  "version": "1.0.5",
   "author": {
     "name": "Breno Calazans",
     "email": "brenocalazans@gmail.com"
