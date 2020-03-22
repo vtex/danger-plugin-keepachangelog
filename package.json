@@ -8,12 +8,12 @@
   },
   "repository": {
     "type": "git",
-    "url": "https://github.com/klzns/danger-plugin-keepachangelog.git"
+    "url": "https://github.com/vtex/danger-plugin-keepachangelog.git"
   },
   "bugs": {
-    "url": "https://github.com/klzns/danger-plugin-keepachangelog/issues"
+    "url": "https://github.com/vtex/danger-plugin-keepachangelog/issues"
   },
-  "homepage": "https://github.com/klzns/danger-plugin-keepachangelog#readme",
+  "homepage": "https://github.com/vtex/danger-plugin-keepachangelog#readme",
   "keywords": [
     "danger",
     "danger-plugin",
