@@ -16,7 +16,7 @@ At a glance:
 
 ```js
 // dangerfile.js
-import keepachangelog from 'danger-plugin-keepachangelog'
+import { keepachangelog } from 'danger-plugin-keepachangelog'
 
 keepachangelog()
 ```

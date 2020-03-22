@@ -32,10 +32,11 @@ const changelogFile = "CHANGELOG.md";
 const defaultOptions: Options = {
   changeVersion: true,
 }
+
 /**
  * Makes changes to CHANGELOG consistent with keepachangelog standard
  */
-export default async function keepachangelog(options: Options = defaultOptions) {
+export async function keepachangelog(options: Options = defaultOptions) {
   const changeVersion = options.changeVersion ?? true
 
   const pr = danger.github.pr;

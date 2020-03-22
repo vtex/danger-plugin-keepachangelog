@@ -1,4 +1,4 @@
-import keepachangelog from "./index";
+import { keepachangelog } from "./index";
 import { noChangelog, removeVersionChange, noSection } from "./message";
 
 declare const global: any;
