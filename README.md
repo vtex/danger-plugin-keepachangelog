@@ -25,12 +25,12 @@ keepachangelog()
 
 > ℹ️ All checks will be skipped if #trivial is present in the title or body of the PR
 
-Situation | Message example
+Situation | Message demo
 ---|---
-No changes to `CHANGELOG.md` were found | [Example](https://github.com/klzns/test-repo/pull/11)
-Missing a section line (eg: `### Fixed`) | [Example](https://github.com/klzns/test-repo/pull/12)
-Missing a new version line (eg: `## [1.0.1] - 2020-03-20`) | [Example](https://github.com/klzns/test-repo/pull/14)
-Having a new version line (when the option `changeVersion` is set to `false`) | [Example](https://github.com/klzns/test-repo/pull/13)
+No changes to `CHANGELOG.md` were found | [Demo](https://github.com/klzns/test-repo/pull/11)
+Missing a section line (eg: `### Fixed`) | [Demo](https://github.com/klzns/test-repo/pull/12)
+Missing a new version line (eg: `## [1.0.1] - 2020-03-20`) | [Demo](https://github.com/klzns/test-repo/pull/14)
+Having a new version line (when the option `changeVersion` is set to `false`) | [Demo](https://github.com/klzns/test-repo/pull/13)
 
 ### Options
 
