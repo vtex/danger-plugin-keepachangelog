@@ -27,7 +27,7 @@ keepachangelog()
 
 This plugin will trigger a Danger `fail` when:
 
-1. No changes to CHANGELOG
+1. No changes to `CHANGELOG.md`
 2. Missing a section line (example: `### Fixed`)
 3. Missing a new version line (example: `## [1.0.1] - 2020-03-20`).
     - When the option `changeVersion` is set to `false`, the check changes to fail if a version line is present
