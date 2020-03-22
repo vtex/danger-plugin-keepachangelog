@@ -1,0 +1,78 @@
+{
+  "name": "danger-plugin-keepachangelog",
+  "description": "Makes changes to CHANGELOG consistent with keepachangelog standard",
+  "version": "0.0.0-development",
+  "author": {
+    "name": "Breno Calazans",
+    "email": "brenocalazans@gmail.com"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/klzns/danger-plugin-keepachangelog.git"
+  },
+  "bugs": {
+    "url": "https://github.com/klzns/danger-plugin-keepachangelog/issues"
+  },
+  "homepage": "https://github.com/klzns/danger-plugin-keepachangelog#readme",
+  "keywords": [
+    "danger",
+    "danger-plugin",
+    "keepachangelog",
+    "changelog",
+    "keep-a-changelog"
+  ],
+  "main": "dist/index.js",
+  "types": "types/index.d.ts",
+  "scripts": {
+    "precommit": "lint-staged",
+    "build": "tsc",
+    "test": "jest",
+    "predocs": "rm -rf docs/",
+    "docs": "esdoc -c .esdoc.json",
+    "prepublish": "npm run build",
+    "prettier": "prettier",
+    "prettier-write": "npm run prettier -- --parser typescript --no-semi --trailing-comma es5 --write --print-width 120",
+    "prettier-project": "npm run prettier-write -- 'src/**/*.{ts,tsx}'",
+    "lint": "tslint \"src/**/*.ts\""
+  },
+  "license": "MIT",
+  "engines": {
+    "node": ">=4.0.0"
+  },
+  "devDependencies": {
+    "ts-jest": "^25.2.1",
+    "@types/jest": "^19.2.4",
+    "tslint": "^5.4.3",
+    "danger": "*",
+    "husky": "^0.13.3",
+    "jest": "^25.0.0",
+    "lint-staged": "^3.4.1",
+    "prettier": "^1.3.1",
+    "typescript": "^3.8.0"
+  },
+  "optionalDependencies": {
+    "esdoc": "^0.5.2"
+  },
+  "lint-staged": {
+    "*.@(ts|tsx)": [
+      "tslint --fix",
+      "npm run prettier-write --",
+      "git add"
+    ]
+  },
+  "jest": {
+    "moduleFileExtensions": [
+      "ts",
+      "tsx",
+      "js"
+    ],
+    "transform": {
+      ".(ts|tsx)": "ts-jest"
+    },
+    "testRegex": "(.test)\\.(ts|tsx)$",
+    "testPathIgnorePatterns": [
+      "\\.snap$",
+      "<rootDir>/node_modules/"
+    ]
+  }
+}
