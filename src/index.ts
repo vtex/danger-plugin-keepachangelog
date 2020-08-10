@@ -64,20 +64,45 @@ export async function keepachangelog(options: Options = defaultOptions) {
     fail(removeVersionChange(newVersionLine), changelogFile);
   }
 
-  const sectionLine = findSection(changelogChanges);
-  if (!sectionLine) {
+  // Check if each new entry is under a section
+  const changelogAfterChanges = await getChangelogLinesAfterDiff();
+  const hasSection = changelogChanges.map(line => {
+    return findSection(line, changelogAfterChanges)
+  }).reduce((previous, current) => {
+    return previous && current
+  }, true)
+
+  if (!hasSection) {
     fail(noSection(changeVersion), changelogFile);
   }
 }
 
-const sectionLine = /### [Added|Changed|Deprecated|Removed|Fixed|Security]/
-function findSection(changelogChanges: string[]) {
-  return changelogChanges.find(line => sectionLine.test(line));
+const sectionLine = /### [Added|Changed|Deprecated|Removed|Fixed|Security]/;
+function findSection(changelogChanges: string, changelog: string[]) {
+  const indexInChangelog = changelog.indexOf(changelogChanges)
+
+  for (let index = indexInChangelog; index >= 0; index--) {
+    const changelogLine = changelog[index]
+
+    if (sectionLine.test(changelogLine)) {
+      return true
+    }
+
+    if (newVersionLine.test(changelogLine)) {
+      return false
+    }
+  }
+  return false
 }
 
 async function getAddedChangelogLines(): Promise<string[]> {
   const result = await danger.git.diffForFile(changelogFile)
   return result!.added.split("\n").map(line => line.slice(1));
+}
+
+async function getChangelogLinesAfterDiff(): Promise<string[]> {
+  const result = await danger.git.diffForFile(changelogFile)
+  return result!.after.split("\n");
 }
 
 const newVersionLine = /## \[[0-9]/;
