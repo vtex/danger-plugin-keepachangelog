@@ -50,7 +50,8 @@ describe("keepachangelog()", () => {
         modified_files: ["CHANGELOG.md"],
         diffForFile: jest.fn(() => {
           return Promise.resolve({
-            added: "+- Translation.\n+"
+            added: "+- Translation.\n+",
+            after: "- Translation.\n"
           });
         })
       },
@@ -70,7 +71,8 @@ describe("keepachangelog()", () => {
         modified_files: ["CHANGELOG.md"],
         diffForFile: jest.fn(() => {
           return Promise.resolve({
-            added: "+## [1.0.1] - 2020-03-20\n+- Translation.\n+"
+            added: "+## [1.0.1] - 2020-03-20\n+- Translation.\n+",
+            after: "## [1.0.1] - 2020-03-20\n- Translation.\n"
           });
         })
       },
@@ -84,13 +86,35 @@ describe("keepachangelog()", () => {
     expect(global.fail).toHaveBeenCalledWith(noSection(true), "CHANGELOG.md");
   });
 
+  it("pass if the entry is contained in a section", async () => {
+    global.danger = {
+      git: {
+        modified_files: ["CHANGELOG.md"],
+        diffForFile: jest.fn(() => {
+          return Promise.resolve({
+            added: "+- Translation.\n+",
+            after: "## [Unreleased]\n### Fixed\n- Issue with image sizing in the SKU Selector.\n- Translation.\n"
+          });
+        })
+      },
+      github: {
+        pr: { title: "title", body: "body" }
+      }
+    };
+
+    await keepachangelog({ changeVersion: false });
+
+    expect(global.fail).not.toHaveBeenCalled();
+  });
+
   it("fail if there's version change when versionLine option is false", async () => {
     global.danger = {
       git: {
         modified_files: ["CHANGELOG.md"],
         diffForFile: jest.fn(() => {
           return Promise.resolve({
-            added: "+## [1.0.1] - 2020-03-20\n+### Fixed\n+- Translation.\n+"
+            added: "+## [1.0.1] - 2020-03-20\n+### Fixed\n+- Translation.\n+",
+            after: "## [1.0.1] - 2020-03-20\n### Fixed\n- Translation.\n"
           });
         })
       },
