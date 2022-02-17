@@ -40,7 +40,7 @@ export async function keepachangelog(options: Options = defaultOptions) {
   const changeVersion = options.changeVersion ?? true
 
   // const pr = danger.github.pr;
-  const pr = danger.gitlub.mr;
+  const pr = danger.gitlab.mr;
 
   const hasChangelog = danger.git.modified_files.includes(changelogFile);
   const isTrivial = (pr.body + pr.title).includes("#trivial");
