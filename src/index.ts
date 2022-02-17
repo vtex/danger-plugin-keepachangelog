@@ -43,11 +43,11 @@ export async function keepachangelog(options: Options = defaultOptions) {
   const pr = danger.gitlab.mr;
 
   const hasChangelog = danger.git.modified_files.includes(changelogFile);
-  const isTrivial = (pr.body + pr.title).includes("#trivial");
+  // const isTrivial = (pr.body + pr.title).includes("#trivial");
 
-  if (isTrivial) {
-    return;
-  }
+  // if (isTrivial) {
+  //   return;
+  // }
 
   if (!hasChangelog) {
     fail(noChangelog(changeVersion), changelogFile);
