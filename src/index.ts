@@ -71,7 +71,7 @@ export async function keepachangelog(options: Options = defaultOptions) {
   }
 }
 
-const sectionLine = /### [Added|Changed|Deprecated|Removed|Fixed|Security]/
+const sectionLine = /### [Featured|Changed|Fixed|Misc]/
 function findSection(changelogChanges: string[]) {
   return changelogChanges.find(line => sectionLine.test(line));
 }
