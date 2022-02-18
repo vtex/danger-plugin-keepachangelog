@@ -49,10 +49,8 @@ ${versionChange ? `\n+## [1.0.1] - ${(new Date).toISOString().slice(0, 10)}` : '
 \`\`\`
 
 You can use one of the following sections:
--  \`Added\` for new features.
+-  \`Featured\` for new features.
 -  \`Changed\` for changes in existing functionality.
--  \`Deprecated\` for soon-to-be removed features.
--  \`Removed\` for now removed features.
 -  \`Fixed\` for any bug fixes.
--  \`Security\` in case of vulnerabilities.
+-  \`Misc\` in other cases.
 `

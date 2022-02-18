@@ -39,36 +39,38 @@ const defaultOptions: Options = {
 export async function keepachangelog(options: Options = defaultOptions) {
   const changeVersion = options.changeVersion ?? true
 
-  // const pr = danger.github.pr;
   const pr = danger.gitlab.mr;
 
   const hasChangelog = danger.git.modified_files.includes(changelogFile);
+
+  // TODO
+  // Сделать логику здесь
   // const isTrivial = (pr.body + pr.title).includes("#trivial");
 
   // if (isTrivial) {
   //   return;
   // }
 
-  if (!hasChangelog) {
-    fail(noChangelog(changeVersion), changelogFile);
-    return;
-  }
+  // if (!hasChangelog) {
+  //   fail(noChangelog(changeVersion), changelogFile);
+  //   return;
+  // }
 
-  // Check if a line with a version bump was added as one of the CHANGELOG.md changes
-  const changelogChanges = await getAddedChangelogLines();
+  // // Check if a line with a version bump was added as one of the CHANGELOG.md changes
+  // const changelogChanges = await getAddedChangelogLines();
 
-  const newVersionLine = findNewVersionLine(changelogChanges);
-  if (!newVersionLine && changeVersion === true) {
-    fail(missingVersion, changelogFile)
-  }
-  if (newVersionLine && changeVersion === false) {
-    fail(removeVersionChange(newVersionLine), changelogFile);
-  }
+  // const newVersionLine = findNewVersionLine(changelogChanges);
+  // if (!newVersionLine && changeVersion === true) {
+  //   fail(missingVersion, changelogFile)
+  // }
+  // if (newVersionLine && changeVersion === false) {
+  //   fail(removeVersionChange(newVersionLine), changelogFile);
+  // }
 
-  const sectionLine = findSection(changelogChanges);
-  if (!sectionLine) {
-    fail(noSection(changeVersion), changelogFile);
-  }
+  // const sectionLine = findSection(changelogChanges);
+  // if (!sectionLine) {
+  //   fail(noSection(changeVersion), changelogFile);
+  // }
 }
 
 const sectionLine = /### [Featured|Changed|Fixed|Misc]/
